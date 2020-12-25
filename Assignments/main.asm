@@ -35,7 +35,16 @@ INCLUDE Irvine32FCIS.inc ;DO NOT CHANGE THIS LINE
 																					
 ;-------------------------Q2 DATA-----------------------	
 
-; Enter Q2 data here
+	first_index_q2 dword ?
+	second_index_q2 dword ?
+	first_char_q2 byte ?
+	second_char_q2 byte ? 
+	str_size_q2 byte ?
+	str_q2 byte 30 dup (?) 
+	str1_q2 byte "Please, Enter your first index: ", 0
+	str2_q2 byte "Please, Enter your second index: ", 0
+	str3_q2 byte "Please, Enter your word: ", 0	
+	str4_q2 byte "Your Swapped word: ", 0
 
 ;-----------------------Q2 DATA End---------------------	
 
@@ -234,8 +243,72 @@ Q1 ENDP
 ; Question two procedure here
 ;----------------------------------------------------------
 Q2 PROC
-		CALL PANIC ; Remove this line before writing your procedure code
+		
+	; read first index 
+	mov edx, offset str1_q2
+	call writestring 
+	call readint 
+	mov first_index_q2, eax
+
+	; read second index 
+	mov edx, offset str2_q2
+	call writestring 
+	call readint 
+	mov second_index_q2, eax
+
+	; read the word
+	mov edx, offset str3_q2 
+	call writestring  
+	mov edx, offset str_q2  
+	mov ecx, lengthof str_q2  
+	call readstring 
+	mov str_size_q2, al
+
 	
+	dec first_index_q2
+	dec second_index_q2 
+	mov edx, 0 ; index 
+	mov cl, str_size_q2
+	
+	mov edx, dword ptr first_index_q2
+	mov esi, offset str_q2 
+	mov al, [str_q2+edx] 
+	mov edx, dword ptr second_index_q2 
+	mov esi, offset str_q2 
+	mov bl, [str_q2+edx] 
+
+	mov edx, offset str4_q2
+	call writestring 
+
+	mov first_char_q2, al
+	mov second_char_q2, bl
+	mov edx, 0
+
+	L :
+
+		cmp edx, first_index_q2
+		je equal_first 
+		cmp edx, second_index_q2
+		je equal_second 
+		jmp other 
+
+		equal_first :
+			mov al, second_char_q2 
+			call writechar 
+			jmp next 
+		equal_second : 
+			mov al,  first_char_q2
+			call writechar 
+			jmp next 
+		other : 
+			mov esi, offset str_q2 
+			mov al, [str_q2+edx] 
+			call writechar 
+		next : 
+			inc edx
+	loop L
+	call crlf 
+
 	RET
 
 Q2 ENDP
