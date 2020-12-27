@@ -78,14 +78,22 @@ INCLUDE Irvine32FCIS.inc ;DO NOT CHANGE THIS LINE
 
 ;-------------------------Q5 DATA-----------------------	
 
-; Enter Q5 data here
+	num_q5 dword ?
+	str1_q5 byte "Please Enter N: ", 0
+	str2_q5 byte "The factorial is: ", 0 
 
 ;-----------------------Q5 DATA End---------------------	
 
 
 ;-------------------------Q6 DATA-----------------------	
 
-; ; Enter Q6 data here
+	a_q6 dword ?
+	r_q6 dword ? 
+	n_q6 dword ? 
+	str1_q6 byte "Enter a: ", 0
+	str2_q6 byte "Enter r: ", 0
+	str3_q6 byte "Enter n: ", 0
+	str4_q6 byte "The generated sequence: ", 0
 
 ;-----------------------Q6 DATA End---------------------	
 														
@@ -480,8 +488,35 @@ Q4 ENDP
 ; Question five procedure here
 ;----------------------------------------------------------
 Q5 PROC
-	CALL PANIC ; Remove this line before writing your procedure code  
 	
+	; read N
+	mov edx, offset str1_q5
+	call writestring 
+	call readint ; stored in eax 
+	mov ecx, eax 
+	dec ecx 
+	mov eax, 1
+	mov edx, 1 ; Total Summation 
+
+	Outter_Loop :
+		push ecx 
+		mov ecx, eax 
+		mov ebx, edx 
+
+		Inner_Loop :
+			add edx, ebx
+		LOOP Inner_Loop
+
+		inc eax 
+		pop ecx 
+	LOOP Outter_Loop
+	
+	mov eax, edx 
+	mov edx, offset str2_q5
+	call writestring 
+	call writedec 
+	call crlf 
+
 	RET
 
 Q5 ENDP
@@ -495,10 +530,54 @@ Q5 ENDP
 ; Question six procedure here
 ;----------------------------------------------------------
 Q6 PROC
-	CALL PANIC ; Remove this line before writing your procedure code
 	
+	; read a
+	mov edx, offset str1_q6
+	call writestring 
+	call readint 
+	mov a_q6, eax 
+
+	; read r
+	mov edx, offset str2_q6
+	call writestring 
+	call readint 
+	mov r_q6, eax 
+
+	; read n
+	mov edx, offset str3_q6
+	call writestring 
+	call readint 
+	mov n_q6, eax 
+
+	mov edx, offset str4_q6
+	call writestring 
+	call crlf 
+
+	mov ecx, n_q6
+	dec ecx 
+	mov eax, a_q6 
+	mov edx, eax 
+	mov ebx, r_q6
+	call writedec 
+	call crlf 
+
+	L : 
+		push ecx 
+		mov ecx, r_q6 
+		dec ecx 
+		mov ebx, eax 
+
+		L1 : 
+			add eax, ebx 
+		LOOP L1
+
+		pop ecx 
+		call writedec 
+		call crlf 
+	LOOP L
+
 	RET
 
 Q6 ENDP
 
-END MAIN
+END MAIN 
