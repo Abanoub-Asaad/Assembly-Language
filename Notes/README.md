@@ -23,8 +23,38 @@
 
 ### Registers :
 ![](Images/Registers.png) 
-#### Accessing parts of registers :
+
+- General Purpose Registers
+  - EAX : accumulator
+  - ECX : loop counter
+  - ESP : stack pointer
+  - ESI : source index
+  - EDI : destination index 
+  - EBP : extended base pointer (stack) 
+- Segment Registers
+  - CS : code segment
+  - DS : data segment
+  - SS : stack segment
+  - ES, FS, GS : additional segments.
+- EIP
+  - Extended Instruction Pointer
+  - keeps track of the next instruction to be executed.
+- EFLAGS
+  - Carry Flag : unsigned arithmetic out of range
+  - Overflow Falg : signed arithmetic out of range
+  - Sign Flag : result is negative
+  - Zero Flag : result is zero
+  - Parity Flag : sum of 1 bits is an even number
+  - Auxiliary Flag :
+	- is 1 when carry from bit 3 to bit 4 is 1 "in addition"
+	- is 1 when carry from bit 3 to bit 4 is 0 "in subtraction"
+
+### Accessing parts of registers :
 ![](Images/Accessing_registers.png)
 ![](Images/Accessing_registers2.png)
- 
+
+### Memory Addressing Modes :
+- Real Address Mode 
+- Protected Mode "default"
+- Virtual 8086 Mode 
 
