@@ -55,6 +55,13 @@
 
 ### Memory Addressing Modes :
 - Real Address Mode 
-- Protected Mode "default"
+  - allows direct access to memory and hardware 
+  - is not a secure mode
+  - used in early processor version (16 bit)	
+  - 20-bit address -> Max memory space 1 MB.
+- Protected Mode "default" 
+  - is a secure mode
+  - Program is sperated to the memory segments
+  - 32-bit address -> Max memory space 4 GB.
 - Virtual 8086 Mode 
-
+  - Runs real mode within protected mode for backward compatibility.
