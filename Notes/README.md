@@ -65,3 +65,11 @@
   - 32-bit address -> Max memory space 4 GB.
 - Virtual 8086 Mode 
   - Runs real mode within protected mode for backward compatibility.
+
+### Calculating Physical Addresses :
+``` Example :- convert 08F1:0100 to a linear address ```
+- Steps :
+   1. multiply segment address by 16 (add a hexadecimal zero)
+   2. add the result to the offset.
+![](Images/Real_Mode_problems.png)
+			
