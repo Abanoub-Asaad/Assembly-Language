@@ -2,7 +2,7 @@
 ## Lecture 1
 
 ### Basic Computer Architecture :
-![](Notes/Assembly/Computer Architecture.png) 
+![](Assembly/Computer Architecture.png) 
 
 - CPU consists of 	
   - ALU "Arithmetic Logic Unit" performs arithmetic and bitwise operations
@@ -19,11 +19,12 @@
   - To execute an instruction, it should be transferred to the CPU registers and follow the instruction execution cycle.
 
 ### Instruction Execution Cycle :
-![](Notes/Assembly/Instruction Excection Cycle.png) 
+![](Assembly/Instruction Excection Cycle.png) 
 
 ### Registers :
-![](Notes/Assembly/Registers.png) 
+![](Assembly/Registers.png) 
 #### Accessing parts of registers :
-![](Notes/Assembly/Accessing registers.png)
-![](Notes/Assembly/Accessing registers2.png) 
+![](Assembly/Accessing registers.png)
+![](Assembly/Accessing registers2.png)
+ 
 
